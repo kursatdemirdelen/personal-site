@@ -1,9 +1,11 @@
 import Tag from "./Tag";
+import Link from "next/link";
 
 export interface Project {
   title: string;
   description: string;
   tags: string[];
+  url?: string;
 }
 
 interface ProjectCardProps {
@@ -11,8 +13,8 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
-  return (
-    <div className="border border-[#333] rounded-lg p-6 hover:border-[#ff3333] transition-colors group">
+  const CardContent = (
+    <>
       <h3 className="text-xl font-semibold mb-2 group-hover:text-[#ff3333] transition-colors">
         {project.title}
       </h3>
@@ -24,6 +26,25 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <Tag key={tag} label={tag} />
         ))}
       </div>
+    </>
+  );
+
+  if (project.url) {
+    return (
+      <Link 
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="border border-[#333] rounded-lg p-6 hover:border-[#ff3333] transition-colors group block"
+      >
+        {CardContent}
+      </Link>
+    );
+  }
+
+  return (
+    <div className="border border-[#333] rounded-lg p-6 hover:border-[#ff3333] transition-colors group">
+      {CardContent}
     </div>
   );
 }

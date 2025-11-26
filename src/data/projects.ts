@@ -2,23 +2,27 @@ import { Project } from "@/components";
 
 export const projects: Project[] = [
   {
-    title: "Project Alpha",
-    description: "A brief description of your first project. What problem does it solve? What technologies did you use?",
-    tags: ["TypeScript", "Next.js"],
+    title: "Cult of Drive",
+    description: "Not just cars. Engineering. Art. Emotion. A platform keeping the analog spirit alive for automotive enthusiasts.",
+    tags: ["TypeScript", "Next.js", "Tailwind CSS"],
+    url: "https://github.com/kursatdemirdelen/cultofdrive",
   },
   {
-    title: "Project Beta",
-    description: "Another project showcase. Describe the impact and your role in building it.",
-    tags: ["React", "Node.js"],
+    title: "Portal Template",
+    description: "A modern, reusable portal template built with TypeScript for rapid web application development.",
+    tags: ["TypeScript", "React"],
+    url: "https://github.com/kursatdemirdelen/portal-template",
   },
   {
-    title: "Project Gamma",
-    description: "Placeholder for a third project. Update with your actual work.",
-    tags: ["Python", "FastAPI"],
+    title: "Flight Ticket App",
+    description: "A flight ticket booking application built with Next.js, featuring a clean UI and smooth user experience.",
+    tags: ["Next.js", "TypeScript", "React"],
+    url: "https://github.com/kursatdemirdelen/nextjs_flight_ticket",
   },
   {
-    title: "Project Delta",
-    description: "One more project to complete the grid. Add your own content here.",
-    tags: ["Go", "Docker"],
+    title: "Freelance Portfolio",
+    description: "A professional portfolio website showcasing freelance work and projects with modern design.",
+    tags: ["JavaScript", "HTML", "CSS"],
+    url: "https://github.com/kursatdemirdelen/freelance-portfolio",
   },
 ];
