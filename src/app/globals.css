@@ -7,6 +7,19 @@
   --accent-hover: #ff5555;
   --muted: #888888;
   --border: #333333;
+  /* design tokens */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --container: 80rem; /* max-w-5xl ≈ 64rem; allow growth */
+  --surface-1: #0f0f0f;
+  --surface-2: #1a1a1a;
+  --heading-tracking: -0.02em;
 }
 
 @theme inline {
@@ -16,10 +29,34 @@
   --color-accent-hover: var(--accent-hover);
   --color-muted: var(--muted);
   --color-border: var(--border);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --space-1: var(--space-1);
+  --space-2: var(--space-2);
+  --space-3: var(--space-3);
+  --space-4: var(--space-4);
+  --space-6: var(--space-6);
+  --space-8: var(--space-8);
+  --container: var(--container);
+  --surface-1: var(--surface-1);
+  --surface-2: var(--surface-2);
+  --heading-tracking: var(--heading-tracking);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* focus-visible baseline for accessibility */
+:where(a, button, [tabindex="0"]) :focus-visible,
+:where(a, button, [tabindex="0"]) :focus {
+  outline: none;
+}
+
+:where(a, button, [tabindex="0"]).focus-visible,
+:where(a, button, [tabindex="0"]):focus-visible {
+  box-shadow: 0 0 0 2px var(--accent);
+  border-color: var(--accent);
 }

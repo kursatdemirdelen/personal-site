@@ -10,14 +10,12 @@ interface HobbyCardProps {
 
 export default function HobbyCard({ hobby }: HobbyCardProps) {
   return (
-    <div className="border border-[#333] rounded-lg p-6 hover:border-[#ff3333] transition-colors group">
+    <div className="border border-[--color-border] rounded-[--radius-sm] p-6 hover:border-[--color-accent] transition-colors group bg-[--surface-1]">
       <div className="text-4xl mb-4">{hobby.icon}</div>
-      <h3 className="text-xl font-semibold mb-2 group-hover:text-[#ff3333] transition-colors">
+      <h3 className="text-xl font-semibold mb-2 group-hover:text-[--color-accent] transition-colors tracking-[var(--heading-tracking)]">
         {hobby.title}
       </h3>
-      <p className="text-[#888] text-sm">
-        {hobby.description}
-      </p>
+      <p className="text-[--color-muted] text-sm">{hobby.description}</p>
     </div>
   );
 }

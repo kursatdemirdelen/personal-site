@@ -7,6 +7,7 @@ export const blogPosts: BlogPost[] = [
     date: "December 15, 2024",
     readTime: "5 min read",
     tags: ["Next.js", "React", "Tutorial"],
+    slug: "getting-started-nextjs-14",
   },
   {
     title: "The Art of Sim Racing",
@@ -14,6 +15,7 @@ export const blogPosts: BlogPost[] = [
     date: "November 28, 2024",
     readTime: "8 min read",
     tags: ["Racing", "Hobbies"],
+    slug: "art-of-sim-racing",
   },
   {
     title: "Building a Dark Theme Design System",
@@ -21,5 +23,6 @@ export const blogPosts: BlogPost[] = [
     date: "October 10, 2024",
     readTime: "4 min read",
     tags: ["Design", "CSS", "UI/UX"],
+    slug: "dark-theme-design-system",
   },
 ];

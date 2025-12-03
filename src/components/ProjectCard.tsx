@@ -15,12 +15,10 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   const CardContent = (
     <>
-      <h3 className="text-xl font-semibold mb-2 group-hover:text-[#ff3333] transition-colors">
+      <h3 className="text-xl font-semibold mb-2 group-hover:text-[--color-accent] transition-colors tracking-[var(--heading-tracking)]">
         {project.title}
       </h3>
-      <p className="text-[#888] text-sm mb-4">
-        {project.description}
-      </p>
+      <p className="text-[--color-muted] text-sm mb-4">{project.description}</p>
       <div className="flex flex-wrap gap-2">
         {project.tags.map((tag) => (
           <Tag key={tag} label={tag} />
@@ -31,11 +29,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   if (project.url) {
     return (
-      <Link 
+      <Link
         href={project.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="border border-[#333] rounded-lg p-6 hover:border-[#ff3333] transition-colors group block"
+        className="border border-[--color-border] rounded-[--radius-sm] p-6 hover:border-[--color-accent] transition-colors group block bg-[--surface-1]"
       >
         {CardContent}
       </Link>
@@ -43,7 +41,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   }
 
   return (
-    <div className="border border-[#333] rounded-lg p-6 hover:border-[#ff3333] transition-colors group">
+    <div className="border border-[--color-border] rounded-[--radius-sm] p-6 hover:border-[--color-accent] transition-colors group bg-[--surface-1]">
       {CardContent}
     </div>
   );

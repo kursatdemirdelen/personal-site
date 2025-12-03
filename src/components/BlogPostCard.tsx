@@ -14,18 +14,16 @@ interface BlogPostCardProps {
 
 export default function BlogPostCard({ post }: BlogPostCardProps) {
   return (
-    <article className="border border-[#333] rounded-lg p-6 hover:border-[#ff3333] transition-colors group">
-      <div className="flex items-center gap-3 text-sm text-[#888] mb-3">
+    <article className="border border-[--color-border] rounded-[--radius-sm] p-6 hover:border-[--color-accent] transition-colors group bg-[--surface-1]">
+      <div className="flex items-center gap-3 text-sm text-[--color-muted] mb-3">
         <time>{post.date}</time>
         <span>•</span>
         <span>{post.readTime}</span>
       </div>
-      <h2 className="text-2xl font-semibold mb-2 group-hover:text-[#ff3333] transition-colors">
+      <h2 className="text-2xl font-semibold mb-2 group-hover:text-[--color-accent] transition-colors tracking-[var(--heading-tracking)]">
         {post.title}
       </h2>
-      <p className="text-[#888] mb-4">
-        {post.description}
-      </p>
+      <p className="text-[--color-muted] mb-4">{post.description}</p>
       <div className="flex flex-wrap gap-2">
         {post.tags.map((tag) => (
           <Tag key={tag} label={tag} />
