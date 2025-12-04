@@ -14,14 +14,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogRoutes = blogPosts.map((post) => ({
     url: `${base}/blog/${post.slug}`,
     lastModified: now,
-    changeFrequency: "weekly",
+    changeFrequency: "weekly" as const,
     priority: 0.7,
   }));
 
   const projectRoutes = projects.map((p) => ({
     url: `${base}/projects/${p.slug}`,
     lastModified: now,
-    changeFrequency: "monthly",
+    changeFrequency: "monthly" as const,
     priority: 0.5,
   }));
 
