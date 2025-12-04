@@ -16,7 +16,7 @@ export default function Section({
   return (
     <section className={className ?? "py-16"}>
       {title && (
-        <h2 className="text-2xl md:text-3xl font-bold mb-4 tracking-[var(--heading-tracking)]">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 tracking-(--heading-tracking)">
           {title}
         </h2>
       )}

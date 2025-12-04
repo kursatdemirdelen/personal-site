@@ -1,12 +1,6 @@
 import Tag from "./Tag";
 import Link from "next/link";
-
-export interface Project {
-  title: string;
-  description: string;
-  tags: string[];
-  url?: string;
-}
+import type { Project } from "@/types";
 
 interface ProjectCardProps {
   project: Project;
@@ -15,7 +9,7 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   const CardContent = (
     <>
-      <h3 className="text-xl font-semibold mb-2 group-hover:text-[--color-accent] transition-colors tracking-[var(--heading-tracking)]">
+      <h3 className="text-xl font-semibold mb-2 group-hover:text-[--color-accent] transition-colors tracking-(--heading-tracking)">
         {project.title}
       </h3>
       <p className="text-[--color-muted] text-sm mb-4">{project.description}</p>

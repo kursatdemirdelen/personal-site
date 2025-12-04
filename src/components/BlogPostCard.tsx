@@ -1,12 +1,5 @@
 import Tag from "./Tag";
-
-export interface BlogPost {
-  title: string;
-  description: string;
-  date: string;
-  readTime: string;
-  tags: string[];
-}
+import type { BlogPost } from "@/types";
 
 interface BlogPostCardProps {
   post: BlogPost;
@@ -20,7 +13,8 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
         <span>•</span>
         <span>{post.readTime}</span>
       </div>
-      <h2 className="text-2xl font-semibold mb-2 group-hover:text-[--color-accent] transition-colors tracking-[var(--heading-tracking)]">
+      <h2 className="text-2xl font-semibold mb-2 group-hover:text-[--color-accent] transition-colors tracking-(--heading-tracking)">
+        {" "}
         {post.title}
       </h2>
       <p className="text-[--color-muted] mb-4">{post.description}</p>

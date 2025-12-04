@@ -7,7 +7,7 @@ export default function Home() {
     <PageLayout>
       {/* About Section */}
       <Section className="py-16 border-b border-[--color-border]">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-[var(--heading-tracking)]">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-(--heading-tracking)">
           {siteConfig.name}
         </h1>
         <p className="text-lg text-[--color-muted] mb-4 max-w-2xl">
