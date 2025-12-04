@@ -6,7 +6,5 @@ export { default as HobbyCard } from "./HobbyCard";
 export { default as BlogPostCard } from "./BlogPostCard";
 export { default as PageLayout } from "./PageLayout";
 export { default as Section } from "./Section";
-
-export type { Project } from "./ProjectCard";
-export type { Hobby } from "./HobbyCard";
-export type { BlogPost } from "./BlogPostCard";
+export { ThemeProvider } from "./ThemeProvider";
+export { default as ThemeToggle } from "./ThemeToggle";

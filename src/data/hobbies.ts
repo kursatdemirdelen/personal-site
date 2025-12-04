@@ -1,4 +1,4 @@
-import { Hobby } from "@/components";
+import type { Hobby } from "@/types";
 
 export const hobbies: Hobby[] = [
   {
