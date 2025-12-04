@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -21,22 +22,25 @@ export default function Header() {
         >
           KD
         </Link>
-        <div className="flex gap-6 text-sm">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              aria-current={pathname === link.href ? "page" : undefined}
-              className={
-                pathname === link.href
-                  ? "text-[--color-accent]"
-                  : "hover:text-[--color-accent] transition-colors"
-              }
-              prefetch={false}
-            >
-              {link.label}
-            </Link>
-          ))}
+        <div className="flex items-center gap-4">
+          <div className="flex gap-6 text-sm">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={pathname === link.href ? "page" : undefined}
+                className={
+                  pathname === link.href
+                    ? "text-[--color-accent]"
+                    : "hover:text-[--color-accent] transition-colors"
+                }
+                prefetch={false}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+          <ThemeToggle />
         </div>
       </div>
     </nav>
