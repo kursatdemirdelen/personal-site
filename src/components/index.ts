@@ -8,3 +8,5 @@ export { default as PageLayout } from "./PageLayout";
 export { default as Section } from "./Section";
 export { ThemeProvider } from "./ThemeProvider";
 export { default as ThemeToggle } from "./ThemeToggle";
+export { default as DetailPageHeader } from "./DetailPageHeader";
+export { default as DetailPageFooter } from "./DetailPageFooter";

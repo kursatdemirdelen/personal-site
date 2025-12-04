@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
@@ -33,8 +32,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr" className="dark">
-      <body className="antialiased">{children}</body>
+    <html lang="tr" suppressHydrationWarning>
+      <body className="antialiased">
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }
