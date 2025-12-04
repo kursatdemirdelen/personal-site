@@ -1,7 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import { siteConfig } from "@/data";
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="border-t border-[--color-border] py-8 bg-[--surface-1]">
       <div className="max-w-5xl mx-auto px-6">
@@ -10,7 +16,7 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
             reserved.
           </p>
-          <div className="flex gap-4 text-sm">
+          <div className="flex items-center gap-4 text-sm">
             <Link
               href={siteConfig.socialLinks.github}
               target="_blank"
@@ -33,6 +39,26 @@ export default function Footer() {
             >
               Email
             </Link>
+            <button
+              onClick={scrollToTop}
+              className="ml-2 p-2 rounded-[--radius-sm] text-[--color-muted] hover:text-[--color-accent] hover:bg-[--surface-2] transition-all"
+              aria-label="Back to top"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 10l7-7m0 0l7 7m-7-7v18"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
