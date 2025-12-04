@@ -9,7 +9,7 @@ export default function Hobbies() {
         title="Hobbies"
         description="When I'm not coding, you can find me pursuing these passions."
       >
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
           {hobbies.map((hobby) => (
             <HobbyCard key={hobby.title} hobby={hobby} />
           ))}
