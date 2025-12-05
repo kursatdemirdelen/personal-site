@@ -19,8 +19,8 @@ export default function Home() {
 
         {/* Skills */}
         <div className="mb-6">
-          <h3 className="text-sm font-semibold text-[#888] uppercase tracking-wider mb-3">
-            Tech Stack
+          <h3 className="text-sm font-semibold text-[--color-muted] uppercase tracking-wider mb-3">
+            Teknolojiler
           </h3>
           <div className="flex flex-wrap gap-2">
             {siteConfig.skills.map((skill) => (
@@ -35,7 +35,7 @@ export default function Home() {
             href={siteConfig.socialLinks.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 border border-[#333] rounded-lg hover:border-[#ff3333] hover:text-[#ff3333] transition-colors text-sm"
+            className="flex items-center gap-2 px-4 py-2 border border-[--color-border] rounded-lg hover:border-[--color-accent] hover:text-[--color-accent] transition-colors text-sm"
           >
             <svg
               className="w-5 h-5"
@@ -55,7 +55,7 @@ export default function Home() {
             href={siteConfig.socialLinks.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 border border-[#333] rounded-lg hover:border-[#ff3333] hover:text-[#ff3333] transition-colors text-sm"
+            className="flex items-center gap-2 px-4 py-2 border border-[--color-border] rounded-lg hover:border-[--color-accent] hover:text-[--color-accent] transition-colors text-sm"
           >
             <svg
               className="w-5 h-5"
@@ -69,7 +69,7 @@ export default function Home() {
           </Link>
           <Link
             href={`mailto:${siteConfig.socialLinks.email}`}
-            className="flex items-center gap-2 px-4 py-2 border border-[#333] rounded-lg hover:border-[#ff3333] hover:text-[#ff3333] transition-colors text-sm"
+            className="flex items-center gap-2 px-4 py-2 border border-[--color-border] rounded-lg hover:border-[--color-accent] hover:text-[--color-accent] transition-colors text-sm"
           >
             <svg
               className="w-5 h-5"
@@ -91,7 +91,7 @@ export default function Home() {
       </Section>
 
       {/* Projects Section */}
-      <Section title="Projects">
+      <Section title="Projeler">
         <div className="grid gap-6 md:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard key={project.title} project={project} />

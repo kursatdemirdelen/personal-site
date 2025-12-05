@@ -16,9 +16,6 @@ export default function ShareButtons({ slug, title }: ShareButtonsProps) {
   const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(
     title
   )}&url=${encodeURIComponent(url)}`;
-  const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-    url
-  )}`;
 
   const copyLink = async () => {
     try {
@@ -36,7 +33,7 @@ export default function ShareButtons({ slug, title }: ShareButtonsProps) {
         href={twitterUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 px-3 py-2 rounded-[--radius-sm] border border-[--color-border] hover:border-[--color-accent] transition-colors"
+        className="inline-flex items-center gap-2 px-3 py-2 rounded-[--radius-sm] border border-[--color-border] hover:border-[--color-accent]"
       >
         <svg
           className="w-4 h-4"
@@ -48,25 +45,9 @@ export default function ShareButtons({ slug, title }: ShareButtonsProps) {
         </svg>
         Tweet
       </a>
-      <a
-        href={linkedinUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 px-3 py-2 rounded-[--radius-sm] border border-[--color-border] hover:border-[--color-accent] transition-colors"
-      >
-        <svg
-          className="w-4 h-4"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2ZM8.34 18H5.67V9.5h2.67ZM7 8.34a1.55 1.55 0 1 1 0-3.1 1.55 1.55 0 0 1 0 3.1Zm11 9.66h-2.67v-4.36c0-1.04-.02-2.39-1.46-2.39-1.46 0-1.68 1.14-1.68 2.32V18H9.52V9.5h2.56v1.16h.04c.36-.68 1.22-1.4 2.51-1.4 2.69 0 3.18 1.77 3.18 4.07Z" />
-        </svg>
-        LinkedIn
-      </a>
       <button
         onClick={copyLink}
-        className="inline-flex items-center gap-2 px-3 py-2 rounded-[--radius-sm] border border-[--color-border] hover:border-[--color-accent] transition-colors"
+        className="inline-flex items-center gap-2 px-3 py-2 rounded-[--radius-sm] border border-[--color-border] hover:border-[--color-accent]"
       >
         <svg
           className="w-4 h-4"

@@ -1,11 +1,33 @@
 "use client";
 
-import { useState } from "react";
-import { PageLayout, BlogPostCard, Section } from "@/components";
-import { blogPosts } from "@/data";
+import { useState, useEffect } from "react";
+import {
+  PageLayout,
+  BlogPostCard,
+  BlogPostCardSkeleton,
+  Section,
+} from "@/components";
+import type { BlogPost } from "@/types";
 
 export default function Blog() {
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch blog posts from API route
+    setIsLoading(true);
+    fetch("/api/blog")
+      .then((res) => res.json())
+      .then((data) => {
+        setBlogPosts(data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error loading blog posts:", err);
+        setIsLoading(false);
+      });
+  }, []);
 
   // Get all unique tags from blog posts
   const allTags = Array.from(
@@ -22,7 +44,7 @@ export default function Blog() {
       <Section
         className="py-16"
         title="Blog"
-        description="Thoughts, tutorials, and stories from the road."
+        description="Düşünceler, yazılım notları ve yolculuktan hikayeler."
       >
         {/* Tag Filter */}
         <div className="mb-8 flex flex-wrap gap-2">
@@ -34,7 +56,7 @@ export default function Blog() {
                 : "bg-[--surface-2] text-[--color-foreground] border border-[--color-border] hover:border-[--color-accent]"
             }`}
           >
-            All Posts ({blogPosts.length})
+            Tüm Yazılar ({blogPosts.length})
           </button>
           {allTags.map((tag) => {
             const count = blogPosts.filter((post) =>
@@ -58,13 +80,20 @@ export default function Blog() {
 
         {/* Blog Posts */}
         <div className="space-y-8">
-          {filteredPosts.length > 0 ? (
+          {isLoading ? (
+            // Loading skeletons
+            <>
+              <BlogPostCardSkeleton />
+              <BlogPostCardSkeleton />
+              <BlogPostCardSkeleton />
+            </>
+          ) : filteredPosts.length > 0 ? (
             filteredPosts.map((post) => (
               <BlogPostCard key={post.slug} post={post} />
             ))
           ) : (
             <p className="text-[--color-muted] text-center py-12">
-              No posts found with tag &quot;{selectedTag}&quot;
+              &quot;{selectedTag}&quot; etiketine sahip yazı bulunamadı
             </p>
           )}
         </div>

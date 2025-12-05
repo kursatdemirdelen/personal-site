@@ -12,3 +12,5 @@ export { default as DetailPageHeader } from "./DetailPageHeader";
 export { default as DetailPageFooter } from "./DetailPageFooter";
 export { default as ShareButtons } from "./ShareButtons";
 export { default as ReadingProgress } from "./ReadingProgress";
+export { default as BlogPostCardSkeleton } from "./BlogPostCardSkeleton";
+export { default as RelatedPosts } from "./RelatedPosts";

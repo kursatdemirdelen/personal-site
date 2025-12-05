@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
   --background: #0a0a0a;
@@ -50,6 +51,35 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Smooth theme transitions for all elements */
+*,
+*::before,
+*::after {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Preserve specific transitions for interactive elements */
+a,
+button,
+[role="button"] {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease,
+              transform 0.2s ease,
+              opacity 0.2s ease;
+}
+
+/* Card hover transitions */
+.card-transition {
+  transition: background-color 0.3s ease, 
+              border-color 0.3s ease, 
+              transform 0.2s ease,
+              box-shadow 0.2s ease;
+}
+
 /* Light theme overrides */
 .light {
   --background: #ffffff;
@@ -84,4 +114,162 @@ body {
     transform: translateX(0);
     opacity: 1;
   }
+}
+
+/* Code syntax highlighting styles */
+pre {
+  overflow-x: auto;
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  line-height: 1.6;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  border-radius: 0;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.9em;
+}
+
+/* Default code block text color */
+pre > code {
+  color: #e6edf3;
+}
+
+pre > code {
+  display: grid;
+  counter-reset: line;
+}
+
+code {
+  counter-increment: line;
+}
+
+code[data-line-numbers] > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1.5rem;
+  text-align: right;
+  color: var(--muted);
+}
+
+code[data-line-numbers-max-digits="2"] > [data-line]::before {
+  width: 2rem;
+}
+
+code[data-line-numbers-max-digits="3"] > [data-line]::before {
+  width: 3rem;
+}
+
+[data-highlighted-line] {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 2px solid var(--accent);
+  padding-left: 0.5rem;
+  margin-left: -0.5rem;
+}
+
+/* Basic syntax highlighting tokens */
+pre code .token.comment,
+pre code .token.prolog,
+pre code .token.doctype,
+pre code .token.cdata {
+  color: #8b949e;
+  font-style: italic;
+}
+
+pre code .token.punctuation {
+  color: #c9d1d9;
+}
+
+pre code .token.property,
+pre code .token.tag,
+pre code .token.boolean,
+pre code .token.number,
+pre code .token.constant,
+pre code .token.symbol,
+pre code .token.deleted {
+  color: #79c0ff;
+}
+
+pre code .token.selector,
+pre code .token.attr-name,
+pre code .token.string,
+pre code .token.char,
+pre code .token.builtin,
+pre code .token.inserted {
+  color: #a5d6ff;
+}
+
+pre code .token.operator,
+pre code .token.entity,
+pre code .token.url,
+pre code .language-css .token.string,
+pre code .style .token.string {
+  color: #ff7b72;
+}
+
+pre code .token.atrule,
+pre code .token.attr-value,
+pre code .token.keyword {
+  color: #ff7b72;
+  font-weight: bold;
+}
+
+pre code .token.function,
+pre code .token.class-name {
+  color: #d2a8ff;
+}
+
+pre code .token.regex,
+pre code .token.important,
+pre code .token.variable {
+  color: #ffa657;
+}
+
+/* Language-specific improvements */
+pre code .language-javascript .token.keyword,
+pre code .language-typescript .token.keyword,
+pre code .language-jsx .token.keyword,
+pre code .language-tsx .token.keyword {
+  color: #ff7b72;
+}
+
+pre code .language-javascript .token.function,
+pre code .language-typescript .token.function,
+pre code .language-jsx .token.function,
+pre code .language-tsx .token.function {
+  color: #d2a8ff;
+}
+
+pre code .language-javascript .token.string,
+pre code .language-typescript .token.string,
+pre code .language-jsx .token.string,
+pre code .language-tsx .token.string {
+  color: #a5d6ff;
+}
+
+/* JSX/TSX specific */
+pre code .language-jsx .token.tag .token.tag,
+pre code .language-tsx .token.tag .token.tag {
+  color: #7ee787;
+}
+
+pre code .language-jsx .token.tag .token.punctuation,
+pre code .language-tsx .token.tag .token.punctuation {
+  color: #7ee787;
+}
+
+pre code .language-jsx .token.attr-name,
+pre code .language-tsx .token.attr-name {
+  color: #79c0ff;
+  font-style: italic;
 }

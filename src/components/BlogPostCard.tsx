@@ -13,7 +13,7 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
 
   return (
     <Link href={`/blog/${post.slug}`} className="block">
-      <article className="border border-[--color-border] rounded-[--radius-sm] p-6 hover:border-[--color-accent] transition-colors group bg-[--surface-1]">
+      <article className="border border-[--color-border] rounded-[--radius-sm] p-6 hover:border-[--color-accent] card-transition group bg-[--surface-1]">
         <div className="flex items-center gap-3 text-sm text-[--color-muted] mb-3">
           <time title={post.date}>{getRelativeTime(post.date)}</time>
           <span>•</span>

@@ -9,7 +9,7 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   const CardContent = (
     <>
-      <h3 className="text-xl font-semibold mb-2 group-hover:text-[--color-accent] transition-colors tracking-(--heading-tracking)">
+      <h3 className="text-xl font-semibold mb-2 group-hover:text-[--color-accent] tracking-(--heading-tracking)">
         {project.title}
       </h3>
       <p className="text-[--color-muted] text-sm mb-4">{project.description}</p>
@@ -24,7 +24,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="border border-[--color-border] rounded-[--radius-sm] p-6 hover:border-[--color-accent] transition-colors group block bg-[--surface-1]"
+      className="border border-[--color-border] rounded-[--radius-sm] p-6 hover:border-[--color-accent] card-transition group block bg-[--surface-1]"
     >
       {CardContent}
     </Link>

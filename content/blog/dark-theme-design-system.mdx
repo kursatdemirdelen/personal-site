@@ -1,0 +1,185 @@
+---
+title: "Dark Theme Tasarım Sistemi Oluşturmak"
+description: "Hem estetik hem de erişilebilir tutarlı bir dark theme nasıl oluşturulur? Renk seçimi, kontrast ve tutarlılık için ipuçları."
+date: "October 10, 2024"
+readTime: "4 dk okuma"
+tags: ["Design", "CSS", "UI/UX"]
+---
+
+## Neden Dark Theme?
+
+Dark (karanlık) temalar son yıllarda popülerlik kazandı. Avantajları:
+
+- 👁️ **Göz yorgunluğu azaltır**: Özellikle gece kullanımında
+- 🔋 **Pil tasarrufu**: OLED ekranlarda daha az güç tüketir
+- 🎨 **Modern görünüm**: Şık ve çağdaş bir estetik
+- ♿ **Erişilebilirlik**: Işığa duyarlı kullanıcılar için önemli
+
+## Renk Paleti Oluşturma
+
+### Ana Renkler
+
+Dark theme için temel bir palet:
+
+```css
+:root {
+  /* Arkaplan tonları */
+  --background: #0a0a0a;
+  --surface-1: #0f0f0f;
+  --surface-2: #1a1a1a;
+
+  /* Metin renkleri */
+  --foreground: #ededed;
+  --muted: #888888;
+
+  /* Vurgu renkleri */
+  --accent: #ff3333;
+  --accent-hover: #ff5555;
+
+  /* Kenarlıklar */
+  --border: #333333;
+}
+```
+
+### Kontrast Oranları
+
+WCAG 2.1 standartlarına göre minimum kontrast oranları:
+
+- **Normal metin**: 4.5:1
+- **Büyük metin** (18pt+): 3:1
+- **UI bileşenleri**: 3:1
+
+```javascript
+// Kontrast hesaplama örneği
+function getContrast(rgb1, rgb2) {
+  const l1 = getLuminance(rgb1);
+  const l2 = getLuminance(rgb2);
+  const lighter = Math.max(l1, l2);
+  const darker = Math.min(l1, l2);
+  return (lighter + 0.05) / (darker + 0.05);
+}
+```
+
+## CSS Custom Properties
+
+Design token'ları için CSS değişkenlerini kullanın:
+
+```css
+/* Design tokens */
+:root {
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-4: 16px;
+  --space-8: 32px;
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+
+  /* Typography */
+  --heading-tracking: -0.02em;
+}
+```
+
+Bu yaklaşımın faydaları:
+
+1. **Tutarlılık**: Tüm projede aynı değerler
+2. **Bakım kolaylığı**: Tek yerden değişiklik
+3. **Theme switching**: Light/Dark geçiş kolaylaşır
+
+## Light Theme Geçişi
+
+Light theme için override stratejisi:
+
+```css
+.light {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --surface-1: #f5f5f5;
+  --surface-2: #eeeeee;
+  --muted: #666666;
+  --border: #e0e0e0;
+}
+```
+
+### Animasyonlu Geçiş
+
+```css
+body {
+  background: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+```
+
+## Tailwind CSS ile Entegrasyon
+
+Tailwind CSS 4'te custom property'leri doğrudan kullanabilirsiniz:
+
+```tsx
+<div className="bg-[--surface-1] border border-[--color-border]">
+  <h1 className="text-[--color-foreground]">Başlık</h1>
+  <p className="text-[--color-muted]">Açıklama metni</p>
+</div>
+```
+
+## Erişilebilirlik İpuçları
+
+### Focus States
+
+Keyboard navigasyonu için net focus state'leri:
+
+```css
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+```
+
+### Prefers-color-scheme
+
+Kullanıcının sistem tercihini algılayın:
+
+```css
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark theme varsayılan */
+  }
+}
+```
+
+## Best Practices
+
+### ✅ Yapılması Gerekenler
+
+- Semantic color isimleri kullanın (`--color-muted` vs. `--gray-500`)
+- Yeterli kontrast sağlayın
+- Hover/focus state'leri net ayırt edin
+- Light ve dark arasında simetri oluşturun
+
+### ❌ Yapılmaması Gerekenler
+
+- Hardcoded hex değerler (`#333` yerine `--border` kullanın)
+- Aşırı parlak/koyu tonlar (göz yorar)
+- Tutarsız spacing/sizing
+- Pure black (#000000) arkaplan (ekran yanması)
+
+## Örnek Bileşen
+
+```tsx
+export function Card({ title, description }: CardProps) {
+  return (
+    <div className="bg-[--surface-1] border border-[--color-border] rounded-[--radius-sm] p-6 hover:border-[--color-accent] transition-colors">
+      <h3 className="text-xl font-semibold mb-2">{title}</h3>
+      <p className="text-[--color-muted]">{description}</p>
+    </div>
+  );
+}
+```
+
+## Sonuç
+
+İyi tasarlanmış bir dark theme, kullanıcı deneyimini önemli ölçüde iyileştirir. Design token'ları, tutarlı kontrast oranları ve semantic naming ile hem güzel hem de erişilebilir bir tema oluşturabilirsiniz.
+
+**Unutmayın: Tasarım sadece görünüm değil, kullanılabilirlik de önemli!** 🎨

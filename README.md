@@ -1,197 +1,193 @@
-# Personal Site
+# Kişisel Web Sitesi
 
-Kürşat Demirdelen — Modern, performanslı ve erişilebilir kişisel web sitesi
+Next.js 16 ile yaptığım modern, hızlı ve minimalist kişisel site. Blog, projeler ve hobilerim burada.
 
-## ✨ Özellikler
+[![CI](https://github.com/kursatdemirdelen/personal-site/workflows/CI/badge.svg)](https://github.com/kursatdemirdelen/personal-site/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-- **Modern Stack**: Next.js 16 (App Router) + React 19 + TypeScript + Tailwind CSS 4
-- **SEO Optimizasyonu**: Meta tags, Open Graph, Twitter Cards, Sitemap, Robots.txt
-- **Erişilebilirlik**: ARIA etiketleri, klavye navigasyonu, semantik HTML
-- **Performans**: React Strict Mode, CSS optimizasyonu, otomatik görsel optimizasyonu
-- **Tasarım Sistemi**: Token-tabanlı tema, tutarlı spacing ve tipografi
-- **Dinamik Rotalar**: Blog yazıları ve projeler için otomatik sayfa oluşturma
-- **Karanlık Tema**: Racing / cult of drive tarzında minimal ve şık tasarım
-- **Modüler Yapı**: Yeniden kullanılabilir bileşenler ve tip güvenliği
+---
 
-## 🚀 Teknolojiler
+## 🎯 Ne var?
 
-- [Next.js 16](https://nextjs.org/) - App Router ile React framework
-- [React 19](https://react.dev/) - UI kütüphanesi
-- [TypeScript 5](https://www.typescriptlang.org/) - Tip güvenliği
-- [Tailwind CSS 4](https://tailwindcss.com/) - Utility-first CSS framework
+- **📝 Blog** — MDX ile yazıyorum, syntax highlighting, sosyal paylaşım (Twitter, Copy link)
+- **💼 Projeler** — Yaptıklarımı gösteriyorum, tag bazlı filtreleme
+- **🎨 Hobiler** — Nelerle uğraştığımı paylaşıyorum
+- **🔍 SEO** — Sitemap, RSS feed, meta tags, Open Graph
+- **🌓 Tema** — Karanlık/Açık tema (smooth geçişler, merkezi transition sistemi)
+- **⚡ Performans** — Server Components, Static generation, MDX syntax highlighting
+- **🇹🇷 Türkçe UI** — Tüm interface ve içerik Türkçe
 
-## 📦 Kurulum
+---
+
+## 🛠️ Teknolojiler
+
+```
+Next.js 16        React 19           TypeScript 5
+Tailwind CSS 4    MDX Blog           next-themes
+```
+
+---
+
+## 🚀 Hızlı Başlangıç
+
+### 1. Kurulum
 
 ```bash
-# Bağımlılıkları yükle
 npm install
-
-# Geliştirme sunucusunu başlat
 npm run dev
-
-# Tarayıcıda aç: http://localhost:3000
 ```
 
-## 🏗️ Build ve Deploy
+Tarayıcıda: http://localhost:3000
+
+### 2. Kişiselleştir
+
+| Dosya | Değiştir |
+|-------|----------|
+| `src/data/site.ts` | Site bilgilerin (ad, başlık, sosyal linkler) |
+| `src/data/projects.ts` | Projelerini ekle (4 örnek var) |
+| `src/data/hobbies.ts` | Hobilerin (6 örnek var) |
+| `src/app/page.tsx` | Ana sayfa "Hakkımda" bölümü |
+
+### 3. Blog Yazısı Ekle
+
+`content/blog/` klasörüne `.mdx` dosyası oluştur:
+
+```mdx
+---
+title: "Blog Başlığı"
+description: "Kısa açıklama"
+date: "December 6, 2025"
+readTime: "5 dk okuma"
+tags: ["JavaScript", "Next.js"]
+---
+
+## Başlık
+
+Yazını buraya yaz. Markdown kullanabilirsin.
+
+\```javascript
+console.log("Kod da yazabilirsin!");
+\```
+```
+
+### 4. Deploy
+
+Vercel'e push et → otomatik deploy
 
 ```bash
-# Production build oluştur
-npm run build
-
-# Production sunucusunu başlat
-npm start
-
-# Lint kontrolü
-npm run lint
+git push
 ```
 
-### Vercel'e Deploy
-
-1. GitHub'a push yap:
-```bash
-git add .
-git commit -m "Initial commit"
-git push origin main
-```
-
-2. [Vercel](https://vercel.com)'e giriş yap ve "Import Project" seç
-
-3. GitHub repository'ni bağla
-
-4. Build ayarları otomatik algılanacak:
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `.next`
-   - **Install Command**: `npm install`
-
-5. Deploy'a tıkla ve otomatik yayınlanmayı bekle
-
-6. `src/data/site.ts` dosyasında `url` alanını Vercel domain'inle güncelle
+---
 
 ## 📁 Proje Yapısı
 
 ```
 src/
-├── app/
-│   ├── page.tsx              # Ana sayfa (About + Projects)
-│   ├── layout.tsx            # Root layout (metadata, fonts)
-│   ├── globals.css           # Global stiller ve tema tokenları
-│   ├── sitemap.ts            # Otomatik sitemap
-│   ├── robots.txt            # SEO robots dosyası
-│   ├── blog/
-│   │   ├── page.tsx          # Blog liste sayfası
-│   │   └── [slug]/
-│   │       └── page.tsx      # Dinamik blog yazı sayfası
-│   ├── hobbies/
-│   │   └── page.tsx          # Hobiler sayfası
-│   └── projects/
-│       └── [slug]/
-│           └── page.tsx      # Dinamik proje detay sayfası
-├── components/               # Yeniden kullanılabilir bileşenler
-│   ├── Header.tsx            # Navigasyon (a11y, active state)
-│   ├── Footer.tsx            # Sayfa altbilgisi (sosyal linkler)
-│   ├── PageLayout.tsx        # Ortak sayfa layout'u
-│   ├── Section.tsx           # Standart bölüm bileşeni
-│   ├── ProjectCard.tsx       # Proje kartı
-│   ├── HobbyCard.tsx         # Hobi kartı
-│   ├── BlogPostCard.tsx      # Blog yazısı kartı
-│   ├── Tag.tsx               # Etiket bileşeni
-│   └── index.ts              # Bileşen export'ları
-├── data/                     # İçerik verileri
-│   ├── site.ts               # Site konfigürasyonu
-│   ├── projects.ts           # Proje listesi (slug dahil)
-│   ├── hobbies.ts            # Hobi listesi
-│   ├── blog.ts               # Blog yazıları (slug dahil)
-│   └── index.ts              # Data export'ları
-└── types/
-    └── index.ts              # TypeScript tip tanımları
+├── app/                 # Next.js sayfaları (Router, layout, sitemap)
+├── components/          # React bileşenleri (14 adet, modüler)
+│   ├── Header.tsx       # Navigasyon + Tema toggle
+│   ├── Footer.tsx       # Sayfa altı + Sosyal linkler
+│   ├── *Card.tsx        # Proje, Blog, Hobi kartları
+│   └── ...
+├── config/
+│   └── mdx-components.tsx  # MDX styling (merkezi)
+├── data/                # Site içeriği (buradan düzenle!)
+│   ├── site.ts          # Konfigürasyon
+│   ├── projects.ts      # Projeler listesi
+│   ├── hobbies.ts       # Hobiler listesi
+│   └── blog.ts          # Blog metadata
+├── types/               # TypeScript tipleri
+└── utils/               # Yardımcı fonksiyonlar
+
+content/
+└── blog/                # Blog yazıları (MDX)
 ```
-
-## 🎨 İçerik Özelleştirme
-
-İçerikleri özelleştirmek için `src/data/` klasöründeki dosyaları düzenleyin:
-
-### 1. Site Bilgileri (`src/data/site.ts`)
-```typescript
-export const siteConfig = {
-  name: "Adınız",
-  title: "Unvanınız",
-  url: "https://your-domain.vercel.app", // Vercel domain'inizi yazın
-  socialLinks: { ... },
-  skills: [ ... ]
-};
-```
-
-### 2. Projeler (`src/data/projects.ts`)
-- Her projeye benzersiz `slug` ekleyin
-- `url` isteğe bağlı (GitHub, demo linki)
-
-### 3. Blog Yazıları (`src/data/blog.ts`)
-- Her yazıya benzersiz `slug` ekleyin
-- Tarih formatı: "December 15, 2024"
-
-### 4. Hobiler (`src/data/hobbies.ts`)
-- Emoji icon'lar kullanın
-- Kısa açıklamalar ekleyin
-
-## 🎯 Tema Tokenları
-
-Tasarım sistemi `src/app/globals.css` içinde CSS değişkenleri ile tanımlı:
-
-- **Renkler**: `--color-background`, `--color-foreground`, `--color-accent`, `--color-muted`, `--color-border`
-- **Yüzeyler**: `--surface-1`, `--surface-2`
-- **Spacing**: `--space-1` (4px) → `--space-8` (32px)
-- **Radius**: `--radius-sm` (8px), `--radius-md` (12px)
-- **Tipografi**: `--heading-tracking` (-0.02em)
-
-## 🔧 Geliştirme Notları
-
-### Type Safety
-- Tüm tipler `src/types/index.ts` dosyasında merkezi olarak tanımlanmıştır
-- `Project`, `BlogPost`, `Hobby` interface'leri
-- `slug` alanları zorunludur (dinamik rotalar için)
-
-### Bileşen Yapısı
-- `Section`: Standart sayfa bölümü (başlık + açıklama + içerik)
-- Kartlar: Hover efektleri, token tabanlı stiller
-- `PageLayout`: Header + Footer ile sarmalama
-
-### Erişilebilirlik
-- `aria-current="page"` aktif navigasyon için
-- `focus-visible` klavye navigasyonu için
-- Semantik HTML5 elementleri
-- SVG icon'larda `aria-hidden="true"`
-
-## 🚀 Sonraki Adımlar
-
-### Hızlı Kazanımlar
-- [x] SEO meta tags (Open Graph, Twitter Cards)
-- [x] Sitemap ve robots.txt
-- [x] Responsive tasarım (Tailwind responsive classes)
-- [x] Sosyal medya linkleri (Header ve Footer)
-- [x] Dinamik routing (blog/projects)
-- [ ] Analytics entegrasyonu (Vercel Analytics)
-- [ ] Custom 404 sayfası
-
-### Orta Vadeli
-- [ ] MDX desteği (blog için rich content)
-- [ ] Contact form (Resend, EmailJS)
-- [ ] RSS feed
-- [ ] Proje galeri görselleri
-- [ ] Blog yazıları için etiket filtreleme
-- [ ] Dark/Light tema toggle (sistem tercihi + manuel)
-
-### Uzun Vadeli
-- [ ] CMS entegrasyonu (Contentful, Sanity, Notion API)
-- [ ] i18n (TR/EN dil desteği)
-- [ ] Blog yorum sistemi (Giscus)
-- [ ] View counter (Vercel Edge Config)
-- [ ] Newsletter signup
-- [ ] Animasyonlar (Framer Motion)
-
-## 📝 Lisans
-
-MIT License - İstediğiniz gibi kullanın!
 
 ---
 
-**Made with ❤️ using Next.js 16, React 19, and Tailwind CSS 4**
+## 🎨 Özelleştirme
+
+### Renkler Değiştir
+
+`src/app/globals.css`'de CSS değişkenleri:
+
+```css
+:root {
+  --accent: #ff3333;           /* Ana renk */
+  --background: #0a0a0a;       /* Arkaplan */
+  --foreground: #ededed;       /* Metin */
+}
+```
+
+### Tema Geçişleri
+
+Global olarak smooth:
+- Renk değişiklikleri: **300ms**
+- Interactive (hover, click): **200ms**
+- Utility class: `.card-transition`
+
+### Font Değiştir
+
+`src/app/layout.tsx`'ten sistem fontlarını değiştirebilirsin.
+
+---
+
+## 🌍 Türkçe/İngilizce
+
+🇹🇷 **Arayüz %100 Türkçe**
+- Header, Footer, butonlar, etiketler, tarihler
+
+🇬🇧 **İngilizce**
+- Blog yazısı metadata'ları, proje açıklamaları
+- Bkz: `content/blog/` ve `src/data/projects.ts`
+
+---
+
+## ⚡ Performans
+
+| Metrik | Değer |
+|--------|-------|
+| **Build Time** | ~1,640ms (Turbopack) |
+| **Route'lar** | 18 (15 static, 3 dynamic) |
+| **CSS System** | Tema-aware tokens |
+| **Responsive** | Mobile-first design |
+| **A11y** | ARIA, keyboard nav, focus states |
+
+---
+
+## 📚 Daha Fazla Bilgi
+
+- [SETUP.md](./SETUP.md) — Detaylı kurulum kılavuzu
+- [USAGE.md](./USAGE.md) — Kullanım ve özelleştirme rehberi
+- [TODO.md](./TODO.md) — Gelecek özellikler
+
+---
+
+## 🎯 Yapılacaklar
+
+- [ ] Analytics (Vercel Analytics)
+- [ ] Full-text search (blog + proje araması)
+- [ ] Comments (Giscus)
+- [ ] i18n (English support)
+- [ ] Table of Contents (blog posts)
+
+---
+
+## 🤝 Katkıda Bulun
+
+Bug? Issue aç. Özellik fikri? PR gönder. Samimi ol! 😊
+
+---
+
+## 📄 Lisans
+
+MIT — Ne yaparsan yap, krediye gerek yok!
+
+## 💬 İletişim
+
+GitHub: [@kursatdemirdelen](https://github.com/kursatdemirdelen)
+
+---
+
+Beğendiysen ⭐ ver 😊

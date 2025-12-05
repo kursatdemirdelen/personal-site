@@ -13,8 +13,8 @@ export default function Footer() {
       <div className="max-w-5xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-[--color-muted] text-sm">
-            &copy; {new Date().getFullYear()} {siteConfig.name}. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} {siteConfig.name}. Tüm hakları
+            saklıdır.
           </p>
           <div className="flex items-center gap-4 text-sm">
             <Link
@@ -41,8 +41,8 @@ export default function Footer() {
             </Link>
             <button
               onClick={scrollToTop}
-              className="ml-2 p-2 rounded-[--radius-sm] text-[--color-muted] hover:text-[--color-accent] hover:bg-[--surface-2] transition-all"
-              aria-label="Back to top"
+              className="ml-2 p-2 rounded-[--radius-sm] text-[--color-muted] hover:text-[--color-accent] hover:bg-[--surface-2]"
+              aria-label="Yukarı çık"
             >
               <svg
                 className="w-5 h-5"

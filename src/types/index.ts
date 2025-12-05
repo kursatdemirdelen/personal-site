@@ -1,9 +1,11 @@
 export interface Project {
   title: string;
   description: string;
+  longDescription?: string;  // Detay sayfası için
   tags: string[];
   url?: string;
   slug: string;
+  features?: string[];       // Özellikler listesi
 }
 
 export interface BlogPost {

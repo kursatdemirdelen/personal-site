@@ -6,8 +6,8 @@ export default function Hobbies() {
     <PageLayout>
       <Section
         className="py-16"
-        title="Hobbies"
-        description="When I'm not coding, you can find me pursuing these passions."
+        title="Hobiler"
+        description="Kod yazmadığım zamanlarda bu tutkularımın peşinden koşuyorum."
       >
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
           {hobbies.map((hobby) => (

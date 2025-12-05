@@ -1,0 +1,84 @@
+---
+title: "Next.js 14 ile Başlangıç"
+description: "App Router, Server Components ve Next.js 14'teki tüm yeni özelliklerle modern web uygulamaları oluşturmak için kapsamlı bir rehber."
+date: "December 15, 2024"
+readTime: "5 dk okuma"
+tags: ["Next.js", "React", "Tutorial"]
+---
+
+## Giriş
+
+Next.js 14, React tabanlı web uygulamaları geliştirmek için güçlü bir framework'tür. Bu yazıda, yeni App Router yapısı ve Server Components gibi modern özellikleri keşfedeceğiz.
+
+## App Router Nedir?
+
+App Router, Next.js 13 ile tanıtılan ve Next.js 14'te olgunlaşan yeni routing sistemidir. Klasik Pages Router'a göre birçok avantaj sunar:
+
+- **Dosya bazlı routing**: `app/` klasörü içinde doğrudan sayfalar oluşturabilirsiniz
+- **Layout desteği**: Ortak layout'ları kolayca paylaşabilirsiniz
+- **Server Components**: Varsayılan olarak sunucu tarafında render edilen bileşenler
+
+### Basit Bir Örnek
+
+```tsx
+// app/page.tsx
+export default function Home() {
+  return (
+    <main>
+      <h1>Merhaba Next.js 14!</h1>
+      <p>Bu bir Server Component.</p>
+    </main>
+  );
+}
+```
+
+## Server Components
+
+Server Components, React'in sunucu tarafında çalışan bileşenleridir. Avantajları:
+
+1. **Daha küçük JavaScript bundle**: Client'a daha az kod gönderilir
+2. **Doğrudan veri erişimi**: API'lara sunucudan direkt bağlanabilirsiniz
+3. **Daha iyi SEO**: İçerik sunucuda render edilir
+
+### Client Components Ne Zaman Kullanılır?
+
+Client Component'lere ihtiyaç duyduğunuzda dosyanın başına `"use client"` ekleyin:
+
+```tsx
+"use client";
+
+import { useState } from "react";
+
+export default function Counter() {
+  const [count, setCount] = useState(0);
+
+  return <button onClick={() => setCount(count + 1)}>Sayı: {count}</button>;
+}
+```
+
+## Data Fetching
+
+Next.js 14'te veri çekme işlemleri çok basit:
+
+```tsx
+async function getData() {
+  const res = await fetch("https://api.example.com/data");
+  return res.json();
+}
+
+export default async function Page() {
+  const data = await getData();
+
+  return <div>{data.title}</div>;
+}
+```
+
+## Sonuç
+
+Next.js 14, modern web geliştirme için mükemmel bir araç seti sunar. App Router ve Server Components ile hem performanslı hem de geliştirici dostu uygulamalar oluşturabilirsiniz.
+
+**Faydalı Kaynaklar:**
+
+- [Next.js Resmi Dokümantasyonu](https://nextjs.org/docs)
+- [React Server Components](https://react.dev/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023)
+- [Vercel Blog](https://vercel.com/blog)

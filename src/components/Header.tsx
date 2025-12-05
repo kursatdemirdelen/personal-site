@@ -6,8 +6,9 @@ import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/hobbies", label: "Hobbies" },
+  { href: "/", label: "Ana Sayfa" },
+  { href: "/projects", label: "Projeler" },
+  { href: "/hobbies", label: "Hobiler" },
   { href: "/blog", label: "Blog" },
 ];
 
