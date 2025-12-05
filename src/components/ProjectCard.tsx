@@ -21,22 +21,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     </>
   );
 
-  if (project.url) {
-    return (
-      <Link
-        href={project.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="border border-[--color-border] rounded-[--radius-sm] p-6 hover:border-[--color-accent] transition-colors group block bg-[--surface-1]"
-      >
-        {CardContent}
-      </Link>
-    );
-  }
-
   return (
-    <div className="border border-[--color-border] rounded-[--radius-sm] p-6 hover:border-[--color-accent] transition-colors group bg-[--surface-1]">
+    <Link
+      href={`/projects/${project.slug}`}
+      className="border border-[--color-border] rounded-[--radius-sm] p-6 hover:border-[--color-accent] transition-colors group block bg-[--surface-1]"
+    >
       {CardContent}
-    </div>
+    </Link>
   );
 }

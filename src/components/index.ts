@@ -10,3 +10,5 @@ export { ThemeProvider } from "./ThemeProvider";
 export { default as ThemeToggle } from "./ThemeToggle";
 export { default as DetailPageHeader } from "./DetailPageHeader";
 export { default as DetailPageFooter } from "./DetailPageFooter";
+export { default as ShareButtons } from "./ShareButtons";
+export { default as ReadingProgress } from "./ReadingProgress";

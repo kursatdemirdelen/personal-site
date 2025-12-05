@@ -4,9 +4,12 @@ import {
   Tag,
   DetailPageHeader,
   DetailPageFooter,
+  ReadingProgress,
+  ShareButtons,
 } from "@/components";
 import { blogPosts } from "@/data";
 import { formatDate, getRelativeTime } from "@/utils/dateFormat";
+import { getReadingTime } from "@/utils/readingTime";
 
 interface Params {
   params: Promise<{ slug: string }>;
@@ -23,8 +26,11 @@ export default async function BlogPostPage({ params }: Params) {
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) return notFound();
 
+  const readTime = post.readTime ?? getReadingTime(post.description);
+
   return (
     <PageLayout>
+      <ReadingProgress />
       <article className="py-16 max-w-3xl mx-auto">
         <DetailPageHeader
           backHref="/blog"
@@ -36,12 +42,15 @@ export default async function BlogPostPage({ params }: Params) {
             <span>•</span>
             <span>{formatDate(post.date)}</span>
             <span>•</span>
-            <span>{post.readTime}</span>
+            <span>{readTime}</span>
           </div>
           <div className="flex flex-wrap gap-2">
             {post.tags.map((tag) => (
               <Tag key={tag} label={tag} />
             ))}
+          </div>
+          <div className="mt-6">
+            <ShareButtons slug={post.slug} title={post.title} />
           </div>
         </DetailPageHeader>
 
